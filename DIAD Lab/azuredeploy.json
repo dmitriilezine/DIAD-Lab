@@ -584,7 +584,7 @@
             "value": "[parameters('adminPassword')]"
           },
           "adRDPNATRuleID": {
-            "value": "[reference(variables('deployPublicIPId')).outputs.adRDPNATRuleID.value]"
+            "value": "[reference(variables('deployPublicIP')).outputs.adRDPNATRuleID.value]"
           },
           "subnetResourceID": {
             "value": "[variables('frontendSubnetID')]"
