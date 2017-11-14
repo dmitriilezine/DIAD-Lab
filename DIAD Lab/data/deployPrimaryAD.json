@@ -26,12 +26,6 @@
         "description": "The password for the Administrator account of the new VMs and Domain"
       }
     },
-    "assetLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location of resources that the script is dependent on such as linked templates and DSC modules"
-      }
-    },
     "assetLocationStorageAccount": {
       "type": "string",
       "metadata": {
