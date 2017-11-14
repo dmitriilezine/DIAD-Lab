@@ -628,7 +628,7 @@
           "storageAccountKeyviaKeyvault": {
             "reference": {
               "keyVault": {
-                "id": "[concat('subscriptions/', parameters('subscriptionID'), '/resourcegroups/', variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
+                "id": "[concat('/subscriptions/', parameters('subscriptionID'), '/resourcegroups/', variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
               },
               "secretName": "[variables('secretName')]"
             }
