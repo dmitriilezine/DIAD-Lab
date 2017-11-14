@@ -461,7 +461,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[variables('updateVNetDNS2')]"
+        "[variables('updateVNetDNS1')]"
       ],
       "properties": {
         "mode": "Incremental",
