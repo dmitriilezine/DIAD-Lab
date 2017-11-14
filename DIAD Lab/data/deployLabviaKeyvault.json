@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dc1VMName": {
+      "type": "string",
+      "metadata": {
+        "description": "The VM name of Primary AD"
+      }
+    },
+    "domainName": {
+      "type": "string",
+      "metadata": {
+        "description": "The domain name"
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Administrator of the new VMs and Domain"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password for the Administrator account of the new VMs and Domain"
+      }
+    },
+    "assetLocationStorageAccount": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of resources that the script is dependent on such as linked templates and DSC modules"
+      }
+    },
+    "storageAccountKeyviaKeyvault": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Key for the Storage account"
+      }
+    }
+  },
+  "variables": {
+    "psScriptURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/ExtendAD-Lab.ps1')]",
+    "psDIADScriptZipPackageURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/ExportImportAD.zip')]",
+    "ouold": "[concat('CN=Users,DC=contoso,DC=com')]",
+    "ou": "[concat('DC=contoso,DC=com')]",
+    "upn": "[concat('contoso.com')]"
+
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('dc1VMName'),'/deployLabviaKeyvault')]",
+      "comments": "deploy OUs and User accounts via Script extension",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-06-15",
+      "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.9",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "[variables('psScriptURL')]",
+            "[variables('psDIADScriptZipPackageURL')]"
+          ]
+        },
+        "protectedSettings": {
+          "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ExtendAD-Lab.ps1 -user ',parameters('adminUsername'),' -password ',parameters('adminPassword'),' -ou ',variables('ou'),' -upn ',variables('upn'),'')]",
+          "storageAccountName": "crlab",
+          "storageAccountKey": "[parameters('storageAccountKeyviaKeyvault')]"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}

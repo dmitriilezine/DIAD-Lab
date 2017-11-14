@@ -27,6 +27,17 @@
   <ItemGroup>
     <Content Include="azuredeploy.json" />
     <Content Include="azuredeploy.parameters.json" />
+    <None Include="data\appServerVmTemplate.json" />
+    <None Include="data\dc1VmTemplate.json" />
+    <None Include="data\dc2VmTemplate.json" />
+    <None Include="data\deployLabviaKeyvault.json" />
+    <None Include="data\deployPrimaryAD.json" />
+    <None Include="data\jumpServerVmTemplate.json" />
+    <None Include="data\nsgDeployment.json" />
+    <None Include="data\promoteSecondDC.json" />
+    <None Include="data\publicIPTemplate.json" />
+    <None Include="data\vNetDeployment.json" />
+    <None Include="data\vnetDNSupdate.json" />
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
