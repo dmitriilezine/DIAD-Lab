@@ -37,6 +37,12 @@
       "metadata": {
         "description": "Key for the Storage account"
       }
+    },
+    "storageAccountSASTokenviaKeyvault": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Key for the Storage account"
+      }
     }
   },
   "variables": {
@@ -68,8 +74,7 @@
         "protectedSettings": {
           "items": {
             "adminPassword": "[parameters('adminPassword')]",
-            "storageAccountName": "crlab",
-            "storageAccountKey": "[parameters('storageAccountKeyviaKeyvault')]"
+            "configurationUrlSasToken": "[parameters('storageAccountSASTokenviaKeyvault')]"
           }
         }
       }
