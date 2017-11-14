@@ -338,7 +338,7 @@
           "storageAccountKeyviaKeyvault": {
             "reference": {
               "keyVault": {
-                "id": "[concat(parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
+                "id": "[concat('/subscriptions/', parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
               },
               "secretName": "[variables('secretName')]"
             }
@@ -432,7 +432,7 @@
           "storageAccountKeyviaKeyvault": {
             "reference": {
               "keyVault": {
-                "id": "[concat(parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
+                "id": "[concat('/subscriptions/', parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
               },
               "secretName": "[variables('secretName')]"
             }
