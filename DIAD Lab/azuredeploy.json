@@ -148,7 +148,7 @@
     "publicIPAddressName": "[concat('ADlbPublicIP',resourceGroup().name)]",
     "lbFE": "[concat('ADLBFE',resourceGroup().name)]",
     "rpdNAT": "[concat('ADRDPNAT',resourceGroup().name)]",
-    "rdpPort": 3389,
+    "rdpPort": "3389",
     "beNSGName": "[concat('BackEndNSG',resourceGroup().name)]",
     "beNSGID": "[resourceId('Microsoft.Network/networkSecurityGroups',variables('beNSGName'))]",
     "feNSGName": "[concat('FrontEndNSG',resourceGroup().name)]",
@@ -477,6 +477,9 @@
           },
           "primaryIpAddress": {
             "value": "[variables('primaryAppServerIpAddress')]"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
           }
         }
       }
@@ -584,6 +587,9 @@
           },
           "primaryIpAddress": {
             "value": "[variables('primaryJumpServerIpAddress')]"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
           }
         }
       }
