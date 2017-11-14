@@ -86,7 +86,7 @@
     }
   },
   "variables": {
-    "assetLocation": "https://raw.githubusercontent.com/dmitriilezine/DIAD-Lab/master/DIAD%20Lab/",
+    "assetLocation": "https://raw.githubusercontent.com/dmitriilezine/DIAD-Lab/master/DIAD%20Lab",
     "assetLocationStorageAccount": "https://crlab.blob.core.windows.net",
     "VMSize": "Standard_A2",
     "dc1VMOSVersion": "[parameters('DC1VMImageSKU')]",
@@ -622,7 +622,7 @@
           "storageAccountKeyviaKeyvault": {
             "reference": {
               "keyVault": {
-                "id": "[concat(parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
+                "id": "[concat('subscriptions/', parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
               },
               "secretName": "[variables('secretName')]"
             }
