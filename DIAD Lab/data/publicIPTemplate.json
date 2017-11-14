@@ -14,7 +14,7 @@
         "description": "DNS Prefix"
       }
     },
-    "publiclbName": {
+    "publicLBName": {
       "type": "string",
       "metadata": {
         "description": "Public LB Name"
@@ -91,7 +91,7 @@
       }
     },
     {
-      "name": "[parameters('publiclbName')]",
+      "name": "[parameters('publicLBName')]",
       "location": "[resourceGroup().location]",
       "type": "Microsoft.Network/loadBalancers",
       "apiVersion": "2015-06-15",
