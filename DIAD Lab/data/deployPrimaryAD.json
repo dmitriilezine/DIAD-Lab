@@ -63,6 +63,7 @@
         "settings": {
           "modulesUrl": "[variables('adPDCModulesURL')]",
           "configurationFunction": "[variables('adPDCConfigurationFunction')]",
+          "SasToken": "[parameters('storageAccountSASTokenviaKeyvault')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
