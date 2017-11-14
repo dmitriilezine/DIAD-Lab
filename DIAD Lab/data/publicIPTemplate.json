@@ -60,7 +60,8 @@
   "variables": {
     "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]",
     "publiclbID": "[resourceId('Microsoft.Network/loadBalancers',parameters('publicLBName'))]",
-    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',parameters('lbFE'))]"
+    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',parameters('lbFE'))]",
+    "adRDPNATRuleID": "[concat(variables('publiclbID'),'/inboundNatRules/',parameters('rpdNAT'))]"
   },
   "resources": [
     {
@@ -111,7 +112,7 @@
   "outputs": {
     "adRDPNATRuleID": {
       "type": "string",
-      "value": "[reference(concat(variables('publiclbID'),'/inboundNatRules/',parameters('rpdNAT')))]"
+      "value": "[reference(variables('adRDPNATRuleID'))]"
     }
   }
 }
