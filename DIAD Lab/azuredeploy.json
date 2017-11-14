@@ -139,6 +139,7 @@
     "vaultName": "CRSecrets",
     "secretName": "crlabkey2",
     "KeyVaultRG": "/resourceGroups/Storage",
+    "keyVaultID": "[concat('/subscriptions/', parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]",
     "adAvailabilitySetName": "adAvailabiltySet",
     "imageOffer": "WindowsServer",
     "imagePublisher": "MicrosoftWindowsServer",
@@ -628,7 +629,7 @@
           "storageAccountKeyviaKeyvault": {
             "reference": {
               "keyVault": {
-                "id": "[concat('/subscriptions/', parameters('subscriptionID'), variables('KeyVaultRG'), '/providers/Microsoft.KeyVault/vaults/', variables('vaultName'))]"
+                "id": "[variables('keyVaultID')]"
               },
               "secretName": "[variables('secretName')]"
             }
