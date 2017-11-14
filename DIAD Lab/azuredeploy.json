@@ -444,6 +444,14 @@
               },
               "secretName": "[variables('secretName')]"
             }
+          },
+          "storageAccountSASTokenviaKeyvault": {
+            "reference": {
+              "keyVault": {
+                "id": "[variables('keyVaultID')]"
+              },
+              "secretName": "[variables('secretnameSASurl')]"
+            }
           }
         }
       }

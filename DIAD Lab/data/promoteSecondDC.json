@@ -43,6 +43,12 @@
       "metadata": {
         "description": "Key for the Storage account"
       }
+    },
+    "storageAccountSASTokenviaKeyvault": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Key for the Storage account"
+      }
     }
   },
   "variables": {
@@ -63,6 +69,7 @@
         "settings": {
           "modulesUrl": "[variables('adDC2ModulesURL')]",
           "configurationFunction": "[variables('adDC2ConfigurationFunction')]",
+          "SasToken": "[parameters('storageAccountSASTokenviaKeyvault')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
