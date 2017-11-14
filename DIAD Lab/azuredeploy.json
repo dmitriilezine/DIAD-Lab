@@ -567,8 +567,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[variables('deployPublicIPId')]",
-        "[variables('updateVNetDNS1')]"
+       "[variables('updateVNetDNS1')]"
       ],
       "properties": {
         "mode": "Incremental",
