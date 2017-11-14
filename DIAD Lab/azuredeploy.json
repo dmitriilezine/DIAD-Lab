@@ -256,7 +256,7 @@
           "virtualNetworkAddressRange": { "value": "[variables('virtualNetworkAddressRange')]" },
           "publicIPAddressName": { "value": "[variables('publicIPAddressName')]" },
           "dnsPrefix": { "value": "[variables('dnsPrefix')]" },
-          "puplicLBName": { "value": "[variables('publicLBName')]" },
+          "publicLBName": { "value": "[variables('publicLBName')]" },
           "publicIPAddressID": { "value": "[variables('publicIPAddressID')]" },
           "lbFE": { "value": "[variables('lbFE')]" },
           "rpdNAT": { "value": "[variables('rpdNAT')]" },
