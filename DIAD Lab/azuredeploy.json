@@ -173,7 +173,7 @@
         "properties": {
           "addressPrefix": "[variables('backendNetworkSubnet')]",
           "networkSecurityGroup": {
-            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('beNSGID'))]"
+            "id": "[variables('beNSGID')]"
           }
         }
       },
@@ -182,7 +182,7 @@
         "properties": {
           "addressPrefix": "[variables('frontendNetworkSubnet')]",
           "networkSecurityGroup": {
-            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('feNSGID'))]"
+            "id": "[variables('feNSGID')]"
           }
         }
       }
