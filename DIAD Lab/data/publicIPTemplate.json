@@ -112,7 +112,7 @@
   "outputs": {
     "adRDPNATRuleID": {
       "type": "string",
-      "value": "[reference(variables('adRDPNATRuleID'))]"
+      "value": "[reference(concat(variables('adRDPNATRuleID')), '2015-06-15')]"
     }
   }
 }
