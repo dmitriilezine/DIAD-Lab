@@ -131,7 +131,7 @@
               },
               "loadBalancerInboundNatRules": [
                 {
-                  "id": "[parameters('adRDPNATRuleID')]"
+                  "id": "[resourceId('Microsoft.Network/loadBalancers', parameters('adRDPNATRuleID'))]"
                 }
               ]
             }
