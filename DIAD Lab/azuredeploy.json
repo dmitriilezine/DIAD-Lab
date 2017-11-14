@@ -47,7 +47,7 @@
         "2016-Datacenter"
       ],
       "metadata": {
-        "description": "Choose OS type for Domain Controller"
+        "description": "Choose OS type for Domain  Controller"
       },
       "defaultValue": "2016-Datacenter"
     },
