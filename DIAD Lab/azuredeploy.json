@@ -265,7 +265,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Compute/availabilitySets',variables('adAvailabilitySetName'))]"
+        "[resourceId('Microsoft.Compute/availabilitySets',variables('adAvailabilitySetName'))]",
+        "[variables('deployVNetId')]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -329,9 +330,6 @@
           },
           "adminPassword": {
             "value": "[parameters('adminPassword')]"
-          },
-          "assetLocation": {
-            "value": "[variables('assetLocation')]"
           },
           "assetLocationStorageAccount": {
             "value": "[variables('assetLocationStorageAccount')]"

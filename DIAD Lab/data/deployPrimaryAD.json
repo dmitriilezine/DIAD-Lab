@@ -73,7 +73,9 @@
         },
         "protectedSettings": {
           "items": {
-            "adminPassword": "[parameters('adminPassword')]"
+            "adminPassword": "[parameters('adminPassword')]",
+            "storageAccountName": "crlab",
+            "storageAccountKey": "[parameters('storageAccountKeyviaKeyvault')]"
           }
         }
       }
