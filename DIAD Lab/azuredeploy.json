@@ -148,11 +148,7 @@
     "publicIPAddressName": "[concat('ADlbPublicIP',resourceGroup().name)]",
     "lbFE": "[concat('ADLBFE',resourceGroup().name)]",
     "rpdNAT": "[concat('ADRDPNAT',resourceGroup().name)]",
-    "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]",
-    "publiclbID": "[resourceId('Microsoft.Network/loadBalancers',variables('publicLBName'))]",
-    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',variables('lbFE'))]",
     "rdpPort": 3389,
-    "adRDPNATRuleID": "[concat(variables('publiclbID'),'/inboundNatRules/',variables('rpdNAT'))]",
     "beNSGName": "[concat('BackEndNSG',resourceGroup().name)]",
     "beNSGID": "[resourceId('Microsoft.Network/networkSecurityGroups',variables('beNSGName'))]",
     "feNSGName": "[concat('FrontEndNSG',resourceGroup().name)]",
@@ -257,10 +253,8 @@
           "publicIPAddressName": { "value": "[variables('publicIPAddressName')]" },
           "dnsPrefix": { "value": "[variables('dnsPrefix')]" },
           "publicLBName": { "value": "[variables('publicLBName')]" },
-          "publicIPAddressID": { "value": "[variables('publicIPAddressID')]" },
           "lbFE": { "value": "[variables('lbFE')]" },
           "rpdNAT": { "value": "[variables('rpdNAT')]" },
-          "publiclbFEConfigID": { "value": "[variables('publiclbFEConfigID')]" },
           "rdpPort": { "value": "[variables('rdpPort')]" }
         }
       }
@@ -554,7 +548,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[variables('publiclbID')]",
+        "[variables('deployPublicIPId')]",
         "[variables('updateVNetDNS2')]"
       ],
       "properties": {
@@ -571,7 +565,7 @@
             "value": "[parameters('adminPassword')]"
           },
           "adRDPNATRuleID": {
-            "value": "[variables('adRDPNATRuleID')]"
+            "value": "[reference('master-node').outputs.adRDPNATRuleID.value]"
           },
           "subnetResourceID": {
             "value": "[variables('frontendSubnetID')]"

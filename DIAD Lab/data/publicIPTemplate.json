@@ -44,12 +44,6 @@
         "description": "Public IP Name"
       }
     },
-    "publicIPAddressID": {
-      "type": "string",
-      "metadata": {
-        "description": "Public IP address ID"
-      }
-    },
     "lbFE": {
       "type": "string",
       "metadata": {
@@ -62,12 +56,6 @@
         "description": "RDP NAT"
       }
     },
-    "publiclbFEConfigID": {
-      "type": "string",
-      "metadata": {
-        "description": ""
-      }
-    },
     "rdpPort": {
       "type": "string",
       "metadata": {
@@ -76,6 +64,9 @@
     }
   },
   "variables": {
+    "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]",
+    "publiclbID": "[resourceId('Microsoft.Network/loadBalancers',parameters('publicLBName'))]",
+    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',parameters('lbFE'))]"
   },
   "resources": [
     {
@@ -101,7 +92,7 @@
             "name": "[parameters('lbFE')]",
             "properties": {
               "publicIPAddress": {
-                "id": "[parameters('publicIPAddressID')]"
+                "id": "[variables('publicIPAddressID')]"
               }
             }
           }
@@ -111,7 +102,7 @@
             "name": "[parameters('rpdNAT')]",
             "properties": {
               "frontendIPConfiguration": {
-                "id": "[parameters('publiclbFEConfigID')]"
+                "id": "[variables('publiclbFEConfigID')]"
               },
               "protocol": "tcp",
               "frontendPort": "[parameters('rdpPort')]",
@@ -123,6 +114,11 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "adRDPNATRuleID": {
+      "type": "string",
+      "value": "[reference(concat(variables('publiclbID'),'/inboundNatRules/',parameters('rpdNAT')))]"
+    }
+  }
 }
 
