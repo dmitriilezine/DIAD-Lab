@@ -567,7 +567,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-       "[variables('updateVNetDNS1')]"
+        "[variables('deployPublicIPId')]",
+        "[variables('updateVNetDNS1')]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -583,7 +584,7 @@
             "value": "[parameters('adminPassword')]"
           },
           "adRDPNATRuleID": {
-            "value": "[reference(variables('deployPublicIP')).outputs.adRDPNATRuleID.value]"
+            "value": "[reference(variables('deployPublicIP')).outputs.adRDPNATRuleIDout.value]"
           },
           "subnetResourceID": {
             "value": "[variables('frontendSubnetID')]"
