@@ -96,10 +96,22 @@
       },
       "defaultValue": "latest"
     },
-    "adRDPNATRuleID": {
+    "rpdNAT": {
       "type": "string",
       "metadata": {
-        "description": "the resource id of the RDP NAT rule"
+        "description": "RDP NAT"
+      }
+    },
+    "lbFE": {
+      "type": "string",
+      "metadata": {
+        "description": "Public IP address ID"
+      }
+    },
+    "publicLBName": {
+      "type": "string",
+      "metadata": {
+        "description": "Public LB Name"
       }
     }
   },
@@ -111,7 +123,10 @@
     "joinUser": "[concat(variables('shortDomainName'), '\\', parameters('adminUsername'))]",
     "joinUserDN": "[concat(parameters('domainName'), '\\', parameters('adminUsername'))]",
     "joinuserUPN": "[concat(parameters('adminUsername'),'@',parameters('domainName'))]",
-    "vmvhdContainerName": "vhds"
+    "vmvhdContainerName": "vhds",
+    "publiclbID": "[resourceId('Microsoft.Network/loadBalancers',parameters('publicLBName'))]",
+    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',parameters('lbFE'))]",
+    "adRDPNATRuleID": "[concat(variables('publiclbID'),'/inboundNatRules/',parameters('rpdNAT'))]"
   },
   "resources": [
     {
@@ -131,7 +146,7 @@
               },
               "loadBalancerInboundNatRules": [
                 {
-                  "id": "[resourceId('Microsoft.Network/loadBalancers',parameters('adRDPNATRuleID'))]"
+                  "id": "[variables('adRDPNATRuleID')]"
                 }
               ]
             }

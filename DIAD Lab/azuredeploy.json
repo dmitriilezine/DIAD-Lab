@@ -583,9 +583,6 @@
           "adminPassword": {
             "value": "[parameters('adminPassword')]"
           },
-          "adRDPNATRuleID": {
-            "value": "[reference(variables('deployPublicIP')).outputs.adRDPNATRuleIDout.value]"
-          },
           "subnetResourceID": {
             "value": "[variables('frontendSubnetID')]"
           },
@@ -606,7 +603,10 @@
           },
           "domainName": {
             "value": "[parameters('domainName')]"
-          }
+          },
+          "publicLBName": { "value": "[variables('publicLBName')]" },
+          "lbFE": { "value": "[variables('lbFE')]" },
+          "rpdNAT": { "value": "[variables('rpdNAT')]" }
         }
       }
     },
