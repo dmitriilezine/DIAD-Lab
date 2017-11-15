@@ -52,7 +52,7 @@
     }
   },
   "variables": {
-    "adDC2ModulesURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/DeployADDS.zip')]",
+    "adDC2ModulesURL": "[concat(parameters('assetLocationStorageAccount'),'/scripts/DeployADDS1.zip')]",
     "adDC2ConfigurationFunction": "DeployADDS.ps1\\DeployDC2"
   },
   "resources": [
