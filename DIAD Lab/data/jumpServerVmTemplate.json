@@ -14,7 +14,7 @@
         "description": "The name of the Administrator of the new VMs and Domain"
       }
     },
-   "dataDiskSize": {
+    "dataDiskSize": {
       "type": "int",
       "metadata": {
         "description": "Size of the VM data disk in GB"
@@ -107,6 +107,12 @@
       "metadata": {
         "description": "Public LB Name"
       }
+    },
+    "adRDPNATRuleID": {
+      "type": "string",
+      "metadata": {
+        "description": ""
+      }
     }
   },
   "variables": {
@@ -117,10 +123,7 @@
     "joinUser": "[concat(variables('shortDomainName'), '\\', parameters('adminUsername'))]",
     "joinUserDN": "[concat(parameters('domainName'), '\\', parameters('adminUsername'))]",
     "joinuserUPN": "[concat(parameters('adminUsername'),'@',parameters('domainName'))]",
-    "vmvhdContainerName": "vhds",
-    "publiclbID": "[resourceId('Microsoft.Network/loadBalancers',parameters('publicLBName'))]",
-    "publiclbFEConfigID": "[concat(variables('publiclbID'),'/frontendIPConfigurations/',parameters('lbFE'))]",
-    "adRDPNATRuleID": "[concat(variables('publiclbID'),'/inboundNatRules/',parameters('rpdNAT'))]"
+    "vmvhdContainerName": "vhds"
   },
   "resources": [
     {
@@ -140,7 +143,7 @@
               },
               "loadBalancerInboundNatRules": [
                 {
-                  "id": "[variables('adRDPNATRuleID')]"
+                  "id": "[parameters('adRDPNATRuleID')]"
                 }
               ]
             }

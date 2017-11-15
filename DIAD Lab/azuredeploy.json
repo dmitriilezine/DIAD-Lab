@@ -608,6 +608,7 @@
           "domainName": {
             "value": "[parameters('domainName')]"
           },
+          "adRDPNATRuleID": { "value": "[variables('adRDPNATRuleID')]" },
           "publicLBName": { "value": "[variables('publicLBName')]" },
           "lbFE": { "value": "[variables('lbFE')]" },
           "rpdNAT": { "value": "[variables('rpdNAT')]" }
