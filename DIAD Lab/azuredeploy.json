@@ -461,6 +461,7 @@
       }
     },
     {
+      "condition": "[equals(parameters('deployAppServer'),'Yes')]",
       "name": "[variables('appServerVmDeployment')]",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
