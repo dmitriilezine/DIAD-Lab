@@ -7,4 +7,4 @@ Unless you have access to the Key Vault that provides access to the storage acco
 </a>
 
 ## Notice/Warning
-* This template is designed for a lab environment and demonstration purposes.
+* This solution is designed for a lab environment and demonstration purposes.
