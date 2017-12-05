@@ -81,6 +81,9 @@
       "location": "[resourceGroup().location]",
       "type": "Microsoft.Network/loadBalancers",
       "apiVersion": "2015-06-15",
+      "dependsOn": [
+        "[parameters('publicIPAddressName')]"
+      ],
       "properties": {
         "frontendIPConfigurations": [
           {
