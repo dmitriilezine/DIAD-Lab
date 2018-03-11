@@ -95,7 +95,7 @@
     "computeApiVersion": "2017-03-30",
     "domainJoinOptions": "3",
     "shortDomainName": "[split(parameters('domainName'),'.')[0]]",
-    "ouPath": "",
+    "ouPath": "OU=T0-Management; OU=T0-Servers; OU=Tier 0; OU=Admin; DC=Contoso; DC=com",
     "joinUser": "[concat(variables('shortDomainName'), '\\', parameters('adminUsername'))]",
     "joinUserDN": "[concat(parameters('domainName'), '\\', parameters('adminUsername'))]",
     "joinuserUPN": "[concat(parameters('adminUsername'),'@',parameters('domainName'))]",
@@ -207,7 +207,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "Name": "[parameters('domainName')]",
-          "OUPath": "",
+          "OUPath": "[variables('ouPath')]",
           "User": "[variables('joinUserDN')]",
           "Restart": "true",
           "Options": "[variables('domainJoinOptions')]"
