@@ -466,7 +466,8 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[variables('updateVNetDNS1')]"
+        "[variables('updateVNetDNS1')]",
+        "[variables('lab1viaKeyvaultDeployment')]"
       ],
       "properties": {
         "mode": "Incremental",
